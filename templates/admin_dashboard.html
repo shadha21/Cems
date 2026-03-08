@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard | CEMS</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI, Arial;
+color:#f1f5f9;
+
+background:
+linear-gradient(rgba(8,15,25,0.95), rgba(8,15,25,0.95)),
+url("https://images.unsplash.com/photo-1498243691581-b145c3f54a5a");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 40px;
+
+background:rgba(10,20,35,0.85);
+backdrop-filter:blur(10px);
+}
+
+.logo{
+font-size:20px;
+font-weight:600;
+color:#60a5fa;
+}
+
+.logout{
+background:#ef4444;
+padding:8px 18px;
+border-radius:20px;
+color:white;
+font-weight:600;
+text-decoration:none;
+transition:0.3s;
+}
+
+.logout:hover{
+background:#dc2626;
+transform:translateY(-1px);
+}
+
+/* CONTAINER */
+
+.container{
+width:92%;
+max-width:1400px;
+margin:auto;
+margin-top:40px;
+}
+
+/* CARDS */
+
+.card{
+background:rgba(10,18,32,0.92);
+padding:30px;
+border-radius:14px;
+
+backdrop-filter:blur(12px);
+
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+margin-bottom:30px;
+
+border:1px solid rgba(255,255,255,0.08);
+}
+
+/* PROFILE */
+
+.profile-card h2{
+margin-bottom:10px;
+color:#60a5fa;
+}
+
+.profile-details p{
+margin:6px 0;
+font-size:15px;
+}
+
+/* EVENTS TITLE */
+
+.event-title{
+text-align:center;
+margin-bottom:20px;
+font-size:22px;
+color:#60a5fa;
+}
+
+/* TABLE */
+
+.table-container{
+width:100%;
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+thead{
+background:#3b82f6;
+}
+th,td{
+padding:12px 14px;
+text-align:center;
+font-size:14px;
+}
+
+th{
+color:white;
+}
+
+tbody tr{
+background:rgba(255,255,255,0.03);
+transition:0.2s;
+}
+
+tbody tr:hover{
+background:rgba(255,255,255,0.08);
+}
+
+/* LISTS INSIDE TABLE */
+
+td ul{
+margin:0;
+padding-left:18px;
+text-align:left;
+}
+
+/* FEEDBACK LINK */
+
+td a{
+color:#3b82f6;
+font-weight:600;
+}
+td a:hover{
+text-decoration:underline;
+}
+
+/* ACTION BUTTONS */
+.dashboard-actions{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+margin-top:25px;
+justify-content:center;
+}
+.btn-primary{
+padding:12px 24px;
+border-radius:25px;
+text-decoration:none;
+color:white;
+font-weight:600;
+background:linear-gradient(90deg,#2563eb,#1e40af);
+transition:0.3s;
+}
+
+.btn-primary:hover{
+transform:translateY(-2px);
+box-shadow:0 6px 18px rgba(37,99,235,0.4);
+}
+
+/* EMPTY MESSAGE */
+
+.empty-message{
+text-align:center;
+font-size:16px;
+padding:25px;
+color:#cbd5f5;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+<div class="logo">🎓 CEMS Admin</div>
+
+<div>
+<a href="{{ url_for('admin_logout') }}" class="logout">🚪 Logout</a>
+</div>
+</nav>
+
+<div class="container">
+
+<div class="card profile-card">
+
+<h2>👨‍💼 Welcome, {{ admin.User_name }}</h2>
+
+<div class="profile-details">
+<p><strong>🆔 Admin ID:</strong> {{ admin.AdminID }}</p>
+<p><strong>📧 Email:</strong> {{ admin.Email }}</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3 class="event-title">📅 Events Created</h3>
+
+{% if admin_events %}
+
+<div class="table-container">
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Date</th>
+<th>Time</th>
+<th>Type</th>
+<th>Venue</th>
+<th>Club</th>
+<th>Sponsors</th>
+<th>Facilities</th>
+<th>Feedback</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for e in admin_events %}
+
+<tr>
+
+<td>{{ e.EventID }}</td>
+<td>{{ e.Event_name }}</td>
+<td>{{ e.Date }}</td>
+<td>{{ e.Time }}</td>
+<td>{{ e.Type }}</td>
+<td>{{ e.Venue }}</td>
+<td>{{ e.Club }}</td>
+
+<td>
+{% if e.Sponsors %}
+<ul>
+{% for sponsor in e.Sponsors.split(', ') %}
+<li>{{ sponsor }}</li>
+{% endfor %}
+</ul>
+{% else %}
+None
+{% endif %}
+</td>
+
+<td>
+{% if e.Facilities %}
+<ul>
+{% for facility in e.Facilities.split(', ') %}
+<li>{{ facility }}</li>
+{% endfor %}
+</ul>
+{% else %}
+None
+{% endif %}
+</td>
+
+<td>
+<a href="{{ url_for('admin_feedback', event_id=e.EventID) }}">🔍 View</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% else %}
+
+<p class="empty-message">📭 No events created yet.</p>
+
+{% endif %}
+
+<div class="dashboard-actions">
+
+<a href="{{ url_for('add_event') }}" class="btn-primary">➕ Add Event</a>
+
+<a href="{{ url_for('events') }}" class="btn-primary">🌐 Public Events</a>
+
+<a href="{{ url_for('add_facility') }}" class="btn-primary">🏢 Add Facility</a>
+
+<a href="{{ url_for('venue_maintenance') }}" class="btn-primary">🛠 Venue Maintenance</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
+

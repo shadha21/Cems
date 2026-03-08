@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Give Feedback</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f172a;
+            color: #e5e7eb;
+        }
+
+        .container {
+            width: 40%;
+            margin: 80px auto;
+            background: #020617;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.7);
+        }
+
+        h2 {
+            color: #38bdf8;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 6px;
+            border: none;
+            background: #1e293b;
+            color: white;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: #22c55e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        a {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            color: #38bdf8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</div>
+<div class="container">
+    <h2>Event Feedback</h2>
+
+    <form method="POST">
+        <label>Rating (1–5)</label>
+        <input type="number" name="rating" min="1" max="5" required>
+
+        <label>Comments</label>
+        <textarea name="comments" rows="4"></textarea>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    <a href="{{ url_for('student_dashboard') }}">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Venue Maintenance</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="auth-container">
+<div class="auth-card">
+
+<h2>🛠 Venue Maintenance</h2>
+
+<form method="POST">
+
+<label>🏢 Select Venue</label>
+
+<select name="venue_id" required>
+{% for v in venues %}
+<option value="{{v.VenueID}}">
+{{v.Location_name}}
+</option>
+{% endfor %}
+</select>
+
+<input type="date" name="start_date" required>
+<input type="date" name="end_date" required>
+
+<button type="submit">Add Maintenance</button>
+
+</form>
+
+<hr>
+
+<h3>📋 Maintenance Schedule</h3>
+
+<table>
+
+<tr>
+<th>Venue</th>
+<th>Start Date</th>
+<th>End Date</th>
+</tr>
+
+{% for m in maintenance_list %}
+
+<tr>
+<td>{{m.Location_name}}</td>
+<td>{{m.Start_date}}</td>
+<td>{{m.End_date}}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<div class="back-home">
+<a href="{{ url_for('admin_dashboard') }}">⬅ Back to Dashboard</a>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</div>
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Admin Login</h2>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST">
+            <input type="email" name="email" placeholder="Admin Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+
+       
+        <div class="back-home">
+            <a href="{{ url_for('admin_signup') }}">New admin? Sign Up</a>
+        </div>
+        <div class="back-home">
+            <a href="{{ url_for('home') }}">← Back to Home</a>
+        </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Login | CEMS</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI, Arial;
+height:100vh;
+
+background:
+linear-gradient(rgba(15,32,39,0.65), rgba(32,58,67,0.65)),
+url("https://images.unsplash.com/photo-1519389950473-47ba0277781c");
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* LOGIN CARD */
+
+.auth-card{
+width:370px;
+padding:40px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,0.10);
+backdrop-filter:blur(16px);
+
+box-shadow:0 15px 40px rgba(0,0,0,0.45);
+border:1px solid rgba(255,255,255,0.25);
+
+text-align:center;
+}
+
+/* TITLE */
+
+.auth-card h2{
+font-size:28px;
+margin-bottom:25px;
+}
+
+/* INPUT FIELDS */
+
+input{
+width:100%;
+padding:13px;
+margin-bottom:16px;
+
+border:none;
+border-radius:10px;
+
+background:rgba(255,255,255,0.9);
+font-size:14px;
+}
+
+/* LOGIN BUTTON */
+
+button{
+width:100%;
+padding:13px;
+
+border:none;
+border-radius:30px;
+
+font-size:16px;
+font-weight:600;
+
+background:linear-gradient(90deg,#00c6ff,#0072ff);
+color:white;
+
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:translateY(-2px);
+box-shadow:0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* LINKS */
+
+.back-home{
+margin-top:15px;
+}
+
+.back-home a{
+color:#e6f2ff;
+text-decoration:none;
+font-size:14px;
+}
+
+.back-home a:hover{
+text-decoration:underline;
+}
+
+/* ERROR MESSAGE */
+
+.error{
+background:#ff5c5c;
+padding:10px;
+border-radius:8px;
+margin-bottom:15px;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="auth-card">
+
+<h2>🛠 Admin Login</h2>
+
+{% if error %}
+<div class="error">⚠ {{ error }}</div>
+{% endif %}
+
+<form method="POST">
+
+<input type="email" name="email" placeholder="📧 Admin Email" required>
+
+<input type="password" name="password" placeholder="🔒 Password" required>
+
+<button type="submit">🚀 Login</button>
+
+</form>
+
+<div class="back-home">
+<a href="{{ url_for('admin_signup') }}">✨ New admin? Sign Up</a>
+</div>
+
+<div class="back-home">
+<a href="{{ url_for('home') }}">🏠 Back to Home</a>
+</div>
+
+</div>
+
+</body>
+</html>

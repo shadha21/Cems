@@ -1,0 +1,741 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background-image: url("/static/images/event_bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.dashboard-container,
+.login-container,
+.main-container {
+    background: transparent !important;
+}
+
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    height: 100vh;
+}
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
+    ),
+    url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1");
+    background-size: cover;
+    background-position: center;
+}
+
+.overlay {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.overlay h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.overlay p {
+    max-width: 700px;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 14px 28px;
+    background-color: #1e90ff;
+    color: white;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #0c70d4;
+}
+
+.btn.secondary {
+    background-color: #28a745;
+}
+
+.btn.secondary:hover {
+    background-color: #1f8a38;
+}
+.page-container {
+    padding: 40px;
+    text-align: center;
+}
+
+.styled-table {
+    margin: 30px auto;
+    border-collapse: collapse;
+    width: 80%;
+    background: white;
+}
+
+.styled-table th, .styled-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+.styled-table th {
+    background-color: #1e90ff;
+    color: white;
+}
+
+.styled-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #1e90ff;
+    font-weight: bold;
+}
+
+.btn.small {
+    padding: 6px 14px;
+    font-size: 0.9rem;
+}
+/* ===== Dark Theme Base ===== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+}
+
+/* Center Card */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login Card */
+.auth-card {
+    background: #111827;
+    padding: 40px;
+    width: 380px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* Title */
+.auth-card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #38bdf8;
+}
+
+/* Inputs */
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: #1f2933;
+    color: #fff;
+    font-size: 14px;
+}
+
+.auth-card input::placeholder {
+    color: #9ca3af;
+}
+
+/* Buttons */
+.auth-card button {
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.auth-card button:hover {
+    background: #1d4ed8;
+}
+
+/* Back Home */
+.back-home {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.back-home a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+.back-home a:hover {
+    text-decoration: underline;
+}
+
+/* Error Message */
+.error {
+    background: #7f1d1d;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.btn-group {
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    margin: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-primary {
+    background: #28a745;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #218838;
+}
+
+.btn-secondary {
+    background: #1e90ff;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #187bcd;
+}
+table {
+    width: 80%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th {
+    background: #1e90ff;
+    color: white;
+    padding: 14px;
+}
+
+td {
+    padding: 12px;
+    color: #222;   /* 🔥 FIX */
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f2;
+}
+/* ===== DASHBOARD COMMON ===== */
+
+.dashboard-container {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #0f2027, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.dashboard-card {
+    background: rgba(15, 23, 42, 0.95);
+    color: #e5e7eb;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.dashboard-header h2 {
+    color: #38bdf8;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.dashboard-header p {
+    font-size: 14px;
+    color: #9ca3af;
+}
+
+/* Profile Info */
+.profile-info {
+    background: #020617;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.profile-info p {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+/* Buttons */
+.dashboard-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.dashboard-actions a {
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #2563eb, #38bdf8);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-actions a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(56,189,248,0.5);
+}
+
+.logout {
+    background: linear-gradient(135deg, #dc2626, #f87171) !important;
+}
+
+/* Back Home */
+.back-home {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-home a {
+    color: #9ca3af;
+    text-decoration: none;
+}
+
+.back-home a:hover {
+    color: #38bdf8;
+}
+/* ===== Student Events Page ===== */
+
+.event-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+.event-card h3 {
+    color: #00ffd5;
+    margin-bottom: 10px;
+}
+
+.event-card p {
+    color: #e0e0e0;
+    margin: 4px 0;
+}
+
+/* Register button */
+.btn-primary {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #00ffd5, #00bfa6);
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #00bfa6, #00ffd5);
+    box-shadow: 0 0 12px #00ffd5;
+}
+
+/* Already registered */
+.btn-disabled {
+    margin-top: 12px;
+    padding: 10px 18px;
+    border-radius: 30px;
+    border: none;
+    background: #444;
+    color: #bbb;
+    cursor: not-allowed;
+}
+
+/* Events page header */
+.dashboard-header p {
+    color: #aaa;
+    font-size: 14px;
+}
+.card, .container, .box {
+    background: rgba(20, 20, 20, 0.9);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+}
+button, .btn {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    padding: 10px 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links .logout {
+    margin-left: auto; /* pushes logout to the rightmost side */
+    colour:blue
+    font-weight: bold;
+}
+.dashboard-actions {
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    gap: 20px; /* spacing between buttons */
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+body {
+    background-color: #121212;
+    color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background: #2a2a2a;
+    color: #f0f0f0;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.logout-btn {
+    background: #ff4b2b;
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #e63900;
+}
+/* ===== RESET ===== */////////////////////
+/** {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+/* ===== GLOBAL BACKGROUND ===== */
+/*body {
+    background-image: url("/static/images/event_bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #e5e7eb;
+}
+
+/* ===== DARK OVERLAY CONTAINERS ===== */
+/*.dashboard-container,
+.auth-container,
+.events-container,
+.form-container {
+    min-height: 100vh;
+    background: rgba(15, 23, 42, 0.88);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+/* ===== CARDS ===== */
+/*.dashboard-card,
+.auth-card,
+.event-card,
+.form-card {
+    background: rgba(2, 6, 23, 0.95);
+    border-radius: 14px;
+    padding: 30px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
+
+/* ===== HEADERS ===== */
+/*.dashboard-header,
+.auth-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dashboard-header h2,
+.auth-card h2 {
+    font-size: 26px;
+    color: #38bdf8;
+}
+
+.dashboard-header p {
+    color: #94a3b8;
+}
+
+/* ===== PROFILE INFO ===== */
+/*.profile-info p {
+    margin: 6px 0;
+    font-size: 15px;
+}
+
+/* ===== INPUTS ===== */
+/*input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    background: #020617;
+    color: #e5e7eb;
+    outline: none;
+}
+
+input::placeholder {
+    color: #64748b;
+}
+
+/* ===== BUTTONS ===== */
+/*button, .btn, .dashboard-actions a {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    padding: 12px 18px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    color: #020617;
+    font-weight: 600;
+    margin: 8px 5px;
+    transition: 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover,
+.dashboard-actions a:hover,
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(56,189,248,0.5);
+}
+
+/* ===== TABLES ===== */
+/*table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #1e293b;
+    text-align: left;
+}
+
+th {
+    color: #38bdf8;
+}
+
+tr:hover {
+    background: rgba(56,189,248,0.08);
+}
+
+/* ===== EVENTS PAGE ===== */
+/*.event-card {
+    margin-bottom: 20px;
+}
+
+/* ===== REGISTER / FEEDBACK ===== */
+/*.feedback-box textarea {
+    min-height: 100px;
+}
+
+/* ===== MESSAGES ===== */
+/*.error {
+    background: rgba(239,68,68,0.2);
+    color: #fecaca;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.success {
+    background: rgba(34,197,94,0.2);
+    color: #bbf7d0;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* ===== LINKS ===== */
+/*a {
+    color: #38bdf8;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===== BACK HOME ===== */
+/*.back-home {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* ===== EMPTY TEXT ===== */
+/*.empty-text {
+    color: #94a3b8;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* ==============================
+   GLOBAL RESET & BODY
+================================ */
+/* =======================
+   GLOBAL
+======================= */
+/* =========================
+   RESET & BASE
+========================= */

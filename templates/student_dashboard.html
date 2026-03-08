@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Dashboard | CEMS</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+color:#f1f5f9;
+
+background:
+linear-gradient(rgba(10,20,35,0.82), rgba(20,40,60,0.82)),
+url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 40px;
+
+background:rgba(10,20,35,0.85);
+backdrop-filter:blur(10px);
+}
+
+.navbar h2{
+margin:0;
+color:#60a5fa;
+}
+
+.nav-buttons a{
+text-decoration:none;
+color:white;
+padding:9px 16px;
+border-radius:20px;
+margin-left:10px;
+font-size:14px;
+transition:0.3s;
+}
+
+.nav-buttons a.register{
+background:linear-gradient(90deg,#22c55e,#16a34a);
+}
+
+.nav-buttons a.logout{
+background:#ef4444;
+}
+
+.nav-buttons a:hover{
+transform:translateY(-2px);
+}
+
+/* CONTAINER */
+
+.container{
+width:85%;
+margin:40px auto;
+}
+
+/* GLASS CARD */
+
+.card{
+background:rgba(15,23,42,0.75);
+padding:25px;
+border-radius:14px;
+margin-bottom:25px;
+
+backdrop-filter:blur(14px);
+
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.15);
+}
+
+.card h3{
+margin-top:0;
+color:#60a5fa;
+}
+
+/* PROFILE TEXT */
+
+.card p{
+margin:6px 0;
+font-size:15px;
+}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+th{
+color:#60a5fa;
+text-align:left;
+}
+
+tr:hover{
+background:rgba(255,255,255,0.05);
+}
+
+/* FEEDBACK BUTTON */
+
+.btn{
+padding:7px 14px;
+border-radius:20px;
+text-decoration:none;
+color:white;
+background:linear-gradient(90deg,#3b82f6,#2563eb);
+font-size:13px;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<h2>🎓 Student Dashboard</h2>
+
+<div class="nav-buttons">
+<a href="{{ url_for('student_events') }}" class="register">📅 Register Events</a>
+<a href="{{ url_for('logout') }}" class="logout">🚪 Logout</a>
+</div>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h3>👤 Profile</h3>
+
+<p><b>Name:</b> {{ student.User_name }}</p>
+<p><b>Department:</b> {{ student.Dept }}</p>
+<p><b>Email:</b> {{ student.Email }}</p>
+<p><b>Phone:</b> {{ student.Phone_Number }}</p>
+
+</div>
+
+<div class="card">
+
+<h3>📌 Registered Events</h3>
+
+{% if registered_events %}
+
+<table>
+
+<tr>
+<th>Event</th>
+<th>Date</th>
+<th>Time</th>
+<th>Type</th>
+<th>Venue</th>
+<th>Club</th>
+<th>Sponsors</th>
+<th>Feedback</th>
+</tr>
+
+{% for event in registered_events %}
+
+<tr>
+
+<td>{{event.Event_name}}</td>
+<td>{{event.Date}}</td>
+<td>{{event.Time}}</td>
+<td>{{event.Type}}</td>
+<td>{{event.Venue}}</td>
+<td>{{event.Club}}</td>
+<td>{{event.Sponsors}}</td>
+
+<td>
+<a class="btn"
+href="{{ url_for('give_feedback', event_id=event.EventID) }}">
+💬 Feedback
+</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<p>📭 No registered events yet.</p>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+</html>

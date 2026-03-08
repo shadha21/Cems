@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register for Events</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+<div class="dashboard-card">
+
+<div class="dashboard-header">
+<h2>🎉 College Events</h2>
+<p>Explore & register for exciting events</p>
+</div>
+
+{% if events %}
+
+{% for event in events %}
+
+<div class="event-card">
+
+<h3>{{ event.Event_name }}</h3>
+
+<p><b>Date:</b> {{ event.Date }}</p>
+<p><b>Time:</b> {{ event.Time }}</p>
+<p><b>Type :</b> {{ event.Type }}</p>
+
+<p><b>Venue :</b> {{ event.Venue }}</p>
+<p><b>Club :</b> {{ event.Club }}</p>
+<p><b>Sponsors :</b> {{ event.Sponsors }}</p>
+
+<p><b>Seats Left :</b> {{ event.available_seats }} / {{ event.Capacity }}</p>
+
+<!-- Progress Bar -->
+{% set percent = (event.registered_count / event.Capacity * 100) if event.Capacity > 0 else 0 %}
+
+<div style="
+width:100%;
+background-color:#374151;
+border-radius:8px;
+overflow:hidden;
+height:10px;
+margin-bottom:10px;
+">
+
+<div style="
+height:100%;
+width:{{ percent }}%;
+background-color:#22c55e;">
+</div>
+
+</div>
+
+<!-- Registration Button Logic -->
+
+<div>
+
+{% if event.Date < current_date %}
+
+<button class="btn-disabled">
+⏳ Event Finished
+</button>
+
+{% elif event.available_seats <= 0 %}
+
+<button class="btn-disabled">
+❌ Seats Full
+</button>
+
+{% elif event.EventID in registered_event_ids %}
+
+<button class="btn-disabled">
+✔ Already Registered
+</button>
+
+{% else %}
+
+<a href="{{ url_for('register_event', event_id=event.EventID) }}"
+class="btn-primary">
+🚀 Register Now
+</a>
+
+{% endif %}
+
+</div>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<p>No events available right now.</p>
+
+{% endif %}
+
+<div class="dashboard-actions">
+<a href="{{ url_for('student_dashboard') }}">← Back to Dashboard</a>
+<a href="{{ url_for('logout') }}">Logout</a>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

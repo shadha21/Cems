@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Feedback</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</div>
+<div class="dashboard-container">
+    <div class="dashboard-card">
+
+        <!--<h2>Event Feedback</h2>-->
+        <h2>Feedback for {{event.Event_name}}</h2>
+<p><b>Venue:</b> {{event.Location_name}}</p>
+<p><b>Club:</b> {{event.Club_name}}</p>
+<p><b>Facilities:</b> {{event.Facilities}}</p>
+
+        {% if feedbacks %}
+        <table class="event-table">
+            <tr>
+                <th>Student</th>
+                <th>Rating</th>
+                <th>Comments</th>
+            </tr>
+
+            {% for f in feedbacks %}
+            <tr>
+                <td>{{ f.User_name }}</td>
+                <td>{{ f.Rating }}/5</td>
+                <td>{{ f.Comments }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p class="empty-text">No feedback submitted yet.</p>
+        {% endif %}
+
+        <a href="{{ url_for('admin_dashboard') }}">⬅ Back to Dashboard</a>
+
+    </div>
+</div>
+
+</body>
+</html>

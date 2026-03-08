@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>➕ Add Event | CEMS</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+
+
+body{
+margin:0;
+font-family:Segoe UI, Arial;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+display:flex;
+justify-content:center;
+align-items:flex-start;
+padding-top:60px;
+min-height:100vh;
+}
+.auth-card{
+background:rgba(0,0,0,0.45);
+padding:35px;
+border-radius:16px;
+width:440px;
+backdrop-filter:blur(12px);
+box-shadow:0 12px 30px rgba(0,0,0,0.45);
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.auth-card h2{
+text-align:center;
+margin-bottom:25px;
+font-weight:600;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+label{
+font-size:14px;
+margin-bottom:3px;
+}
+
+input, select{
+padding:11px;
+border-radius:8px;
+border:none;
+outline:none;
+font-size:14px;
+background:rgba(255,255,255,0.95);
+color:#222;
+}
+
+button{
+margin-top:10px;
+padding:12px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#00c6ff,#0072ff);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.4);
+}
+
+.back-home{
+margin-top:18px;
+text-align:center;
+}
+
+.back-home a{
+color:#9fd8ff;
+text-decoration:none;
+font-size:14px;
+}
+
+.back-home a:hover{
+text-decoration:underline;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="auth-card">
+
+<h2>📅 Create New Event</h2>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div style="
+background:#ff4d4d;
+color:white;
+padding:12px;
+border-radius:8px;
+margin-bottom:15px;
+text-align:center;
+font-weight:600;">
+{{ messages[0] }}
+</div>
+{% endif %}
+{% endwith %}
+
+<form method="POST">
+
+<label>🎯 Event Name</label>
+<input type="text" name="event_name" placeholder="Enter event name" required>
+
+<label>📆 Event Date</label>
+<input type="date" name="date" required>
+
+<label>⏰ Event Time</label>
+<input type="time" name="time" required>
+
+<label>🏷 Event Type</label>
+<input type="text" name="type" placeholder="Technical / Cultural" required>
+
+<label>🤝 Sponsors</label>
+<input type="text" name="sponsor" placeholder="Optional">
+
+<label>🏛 Select Venue</label>
+<select name="venue_id" required>
+{% for v in venues %}
+<option value="{{ v['VenueID'] }}">
+🏢 {{ v['Location_name'] }} — 👥 Capacity: {{ v['Capacity'] }}
+</option>
+{% endfor %}
+</select>
+
+<label>🎓 Organizing Club</label>
+<select name="club_id" required>
+{% for c in clubs %}
+<option value="{{ c['ClubID'] }}">
+🏫 {{ c['Club_name'] }} — 👨‍💼 Head: {{ c['Club_head'] }}
+</option>
+{% endfor %}
+</select>
+
+<button type="submit">🚀 Add Event</button>
+
+</form>
+
+<div class="back-home">
+<a href="{{ url_for('admin_dashboard') }}">⬅ Back to Dashboard</a>
+</div>
+
+</div>
+
+</body>
+</html>

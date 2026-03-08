@@ -1,0 +1,260 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</div>
+<div class="dashboard-container">
+    <div class="dashboard-card">
+
+        <div class="dashboard-header">
+            <h2>Upcoming College Events</h2>
+        </div>
+
+        <table class="event-table">
+            <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Type</th>
+                    <th>Sponsors</th>
+                    <th>Event</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Type</th>
+                    <th>Venue</th>
+                    <th>Club</th>
+                    <th>Sponsors</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                <tr>
+                    <td>{{ event.Event_name }}</td>
+                    <td>{{ event.Date }}</td>
+                    <td>{{ event.Time }}</td>
+                    <td>{{ event.Type }}</td>
+                    <td>{{ event.Sponsors }}</td>
+                    <td>{{event.Event_name }}</td>
+<td>{{event.Date }}</td>
+<td>{{event.Time }}</td>
+<td>{{event.Type }}</td>
+<td>{{event.Location_name }}</td>
+<td>{{event.Club_name }}</td>
+<td>{{event.Sponsors }}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="back-home">
+            {% if session.get('admin_id') %}
+                <a href="{{ url_for('admin_dashboard') }}">← Back to Dashboard</a>
+            {% elif session.get('student_id') %}
+                <a href="{{ url_for('student_dashboard') }}">← Back to Dashboard</a>
+            {% else %}
+                <a href="{{ url_for('home') }}">← Back to Home</a>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Events | CEMS</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+color:#e5e7eb;
+
+/* BACKGROUND IMAGE */
+background:
+linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.90)),
+url("https://images.unsplash.com/photo-1523580846011-d3a5bc25702b");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+/* CENTER CONTAINER */
+
+.dashboard-container{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:40px 20px;
+}
+
+/* GLASS CARD */
+
+.dashboard-card{
+width:95%;
+max-width:1100px;
+
+background:rgba(2,6,23,0.75);
+backdrop-filter:blur(12px);
+
+border-radius:14px;
+padding:35px;
+
+box-shadow:0 10px 35px rgba(0,0,0,0.6);
+border:1px solid rgba(255,255,255,0.05);
+}
+
+/* HEADER */
+
+.dashboard-header{
+text-align:center;
+margin-bottom:25px;
+}
+
+.dashboard-header h2{
+margin:0;
+color:#3b82f6;
+font-size:28px;
+}
+
+/* TABLE */
+
+.event-table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+.event-table thead{
+background:#1e40af;
+}
+
+.event-table th{
+padding:12px;
+color:white;
+font-weight:600;
+}
+
+.event-table td{
+padding:12px;
+text-align:center;
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.event-table tbody tr{
+background:rgba(255,255,255,0.02);
+transition:0.2s;
+}
+
+.event-table tbody tr:hover{
+background:rgba(59,130,246,0.15);
+}
+
+/* BACK BUTTON */
+
+.back-home{
+text-align:center;
+margin-top:25px;
+}
+
+.back-home a{
+text-decoration:none;
+color:white;
+padding:10px 20px;
+border-radius:20px;
+
+background:linear-gradient(90deg,#2563eb,#1e3a8a);
+
+font-weight:600;
+transition:0.3s;
+}
+
+.back-home a:hover{
+transform:translateY(-2px);
+box-shadow:0 6px 15px rgba(0,0,0,0.4);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+<div class="dashboard-card">
+
+<div class="dashboard-header">
+<h2>📅 Upcoming College Events</h2>
+</div>
+
+<table class="event-table">
+
+<thead>
+<tr>
+<th>🎯 Event</th>
+<th>📅 Date</th>
+<th>⏰ Time</th>
+<th>🏷 Type</th>
+<th>🏢 Venue</th>
+<th>👥 Club</th>
+<th>💼 Sponsors</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for event in events %}
+
+<tr>
+<td>{{event.Event_name}}</td>
+<td>{{event.Date}}</td>
+<td>{{event.Time}}</td>
+<td>{{event.Type}}</td>
+<td>{{event.Location_name}}</td>
+<td>{{event.Club_name}}</td>
+<td>{{event.Sponsors}}</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+<div class="back-home">
+
+{% if session.get('admin_id') %}
+<a href="{{ url_for('admin_dashboard') }}">⬅ Back to Dashboard</a>
+
+{% elif session.get('student_id') %}
+<a href="{{ url_for('student_dashboard') }}">⬅ Back to Dashboard</a>
+
+{% else %}
+<a href="{{ url_for('home') }}">⬅ Back to Home</a>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add Facility | CEMS</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+
+/* Background similar to admin dashboard */
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    min-height:100vh;
+    color:white;
+}
+
+/* Navbar */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background: rgba(0,0,0,0.6);
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    text-decoration:underline;
+}
+
+/* Center container */
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:80px;
+}
+
+/* Card */
+.card{
+    background: rgba(0,0,0,0.65);
+    padding:40px;
+    border-radius:10px;
+    width:420px;
+    box-shadow:0px 8px 20px rgba(0,0,0,0.4);
+}
+
+.card h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+/* Form */
+.input-group{
+    margin-bottom:20px;
+    display:flex;
+    flex-direction:column;
+}
+
+.input-group label{
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+.input-group input,
+.input-group select{
+    padding:10px;
+    border-radius:6px;
+    border:none;
+    outline:none;
+    font-size:14px;
+}
+
+/* Button */
+.btn-primary{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:25px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    background: linear-gradient(90deg,#00c6ff,#0072ff);
+    color:white;
+    transition:0.3s;
+}
+
+.btn-primary:hover{
+    transform:scale(1.03);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+<div class="logo">CEMS Admin</div>
+<div class="nav-links">
+<a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+<a href="{{ url_for('admin_logout') }}">Logout</a>
+</div>
+</nav>
+
+<div class="container">
+
+<div class="card">
+
+<h2>🏢 Add Facility to Venue</h2>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div style="background:#22c55e;padding:10px;border-radius:6px;margin-bottom:15px;text-align:center;">
+{{ messages[0] }}
+</div>
+{% endif %}
+{% endwith %}
+
+<form action="{{ url_for('add_facility') }}" method="POST">
+
+<div class="input-group">
+<label>Select Venue:</label>
+<select name="venue_id" required>
+{% for v in venues %}
+<option value="{{ v.VenueID }}">{{ v.Location_name }}</option>
+{% endfor %}
+</select>
+</div>
+
+<div class="input-group">
+<label>Facility Name:</label>
+<input type="text" name="facility_name" required>
+</div>
+
+<button type="submit" class="btn-primary">Add Facility</button>
+
+</form>
+
+</div>
+</div>
+
+</body>
+</html>
